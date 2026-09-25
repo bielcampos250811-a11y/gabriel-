@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabriel — Portfólio Escolar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --preto: #12181c;
+    --branco: #ffffff;
+    --azul: #1e5aa8;
+    --azul-claro: #3da9fc;
+    --azul-fundo: #eaf4ff;
+    --cinza-texto: #4a5561;
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--preto);
+    background: var(--branco);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3{
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 700;
+  }
+
+  a{ color: inherit; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    background: var(--preto);
+    color: var(--branco);
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8vh 8vw;
+    overflow: hidden;
+  }
+
+  .hero-helix{
+    position: absolute;
+    top: 0;
+    right: -5%;
+    height: 100%;
+    width: 45%;
+    opacity: 0.5;
+  }
+
+  .hero-content{
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+  }
+
+  .hero-eyebrow{
+    color: var(--azul-claro);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1{
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero p{
+    font-size: 1.15rem;
+    color: #c7d4de;
+    max-width: 480px;
+  }
+
+  .hero-tags{
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .tag{
+    border: 1px solid #33424d;
+    color: #c7d4de;
+    padding: 0.4rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: absolute;
+    top: 2.5rem;
+    left: 8vw;
+    z-index: 3;
+    display: flex;
+    gap: 2rem;
+    font-size: 0.9rem;
+  }
+
+  nav a{
+    color: #c7d4de;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease;
+  }
+
+  nav a:hover, nav a:focus-visible{
+    border-color: var(--azul-claro);
+  }
+
+  /* ---------- SOBRE ---------- */
+  .sobre{
+    padding: 7rem 8vw;
+    max-width: 780px;
+  }
+
+  .sobre h2{
+    font-size: 2.2rem;
+    margin-bottom: 1.8rem;
+    color: var(--azul);
+  }
+
+  .sobre p{
+    font-size: 1.08rem;
+    color: var(--cinza-texto);
+    margin-bottom: 1.2rem;
+    max-width: 68ch;
+  }
+
+  .interesses{
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .interesse-chip{
+    background: var(--azul-fundo);
+    color: var(--azul);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  /* ---------- PROJETOS ---------- */
+  .projetos{
+    background: var(--azul-fundo);
+    padding: 7rem 8vw;
+  }
+
+  .projetos h2{
+    font-size: 2.2rem;
+    margin-bottom: 0.6rem;
+    color: var(--preto);
+  }
+
+  .projetos-intro{
+    color: var(--cinza-texto);
+    max-width: 60ch;
+    margin-bottom: 3.5rem;
+  }
+
+  .projetos-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.8rem;
+  }
+
+  .projeto-card{
+    background: var(--branco);
+    border-top: 4px solid var(--azul);
+    padding: 2rem 1.8rem;
+  }
+
+  .projeto-materia{
+    color: var(--azul);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .projeto-card h3{
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .projeto-card p{
+    color: var(--cinza-texto);
+    font-size: 0.96rem;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background: var(--preto);
+    color: #8a99a5;
+    text-align: center;
+    padding: 3rem 8vw;
+    font-size: 0.9rem;
+  }
+
+  footer strong{ color: var(--branco); }
+
+  /* ---------- Acessibilidade / responsivo ---------- */
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--azul-claro);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 640px){
+    nav{ display: none; }
+    .hero{ padding: 6rem 6vw; min-height: 80vh; }
+    .sobre, .projetos{ padding: 4.5rem 6vw; }
+    .hero-helix{ width: 70%; opacity: 0.25; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#sobre">Sobre</a>
+  <a href="#projetos">Projetos</a>
+</nav>
+
+<section class="hero">
+  <!-- Hélice de DNA decorativa em SVG, ligada ao tema biologia -->
+  <svg class="hero-helix" viewBox="0 0 300 800" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M40,0 C160,100 -80,200 40,300 C160,400 -80,500 40,600 C160,700 -80,750 40,800"
+          fill="none" stroke="#3da9fc" stroke-width="2.5"/>
+    <path d="M220,0 C100,100 340,200 220,300 C100,400 340,500 220,600 C100,700 340,750 220,800"
+          fill="none" stroke="#1e5aa8" stroke-width="2.5"/>
+    <g stroke="#3da9fc" stroke-width="1.5" opacity="0.6">
+      <line x1="40" y1="40" x2="220" y2="40"/>
+      <line x1="70" y1="120" x2="190" y2="120"/>
+      <line x1="90" y1="200" x2="170" y2="200"/>
+      <line x1="70" y1="280" x2="190" y2="280"/>
+      <line x1="40" y1="360" x2="220" y2="360"/>
+      <line x1="70" y1="440" x2="190" y2="440"/>
+      <line x1="90" y1="520" x2="170" y2="520"/>
+      <line x1="70" y1="600" x2="190" y2="600"/>
+      <line x1="40" y1="680" x2="220" y2="680"/>
+      <line x1="70" y1="760" x2="190" y2="760"/>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Portfólio escolar</p>
+    <h1>Gabriel</h1>
+    <p>Aluno do ensino médio em São Paulo, curioso por Biologia — dos ecossistemas às células. Fora da escola, o campo é outro: bola no pé e Free Fire na tela.</p>
+    <div class="hero-tags">
+      <span class="tag">Biologia</span>
+      <span class="tag">Futebol</span>
+      <span class="tag">Free Fire</span>
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <h2>Sobre mim</h2>
+  <p>
+    Me chamo Gabriel, sou estudante do ensino médio e moro na Zona Leste de São Paulo.
+    Biologia é a matéria que mais me interessa — gosto de entender como a vida funciona,
+    de células a ecossistemas inteiros.
+  </p>
+  <p>
+    Quando não estou estudando, você provavelmente vai me encontrar jogando bola com os
+    amigos ou disputando uma partida de Free Fire.
+  </p>
+  <div class="interesses">
+    <span class="interesse-chip">🔬 Biologia</span>
+    <span class="interesse-chip">⚽ Futebol</span>
+    <span class="interesse-chip">🎮 Free Fire</span>
+  </div>
+</section>
+
+<section class="projetos" id="projetos">
+  <h2>Projetos e trabalhos</h2>
+  <p class="projetos-intro">
+    Trabalhos escolares que fiz, principalmente de Biologia. (Estes três cards são
+    exemplos — troque pelo título, matéria e resumo dos seus trabalhos reais.)
+  </p>
+  <div class="projetos-grid">
+    <div class="projeto-card">
+      <p class="projeto-materia">BIOLOGIA</p>
+      <h3>A célula e suas organelas</h3>
+      <p>Trabalho sobre a estrutura da célula eucariota, explicando a função de cada
+      organela com desenhos e um modelo em maquete.</p>
+    </div>
+    <div class="projeto-card">
+      <p class="projeto-materia">BIOLOGIA</p>
+      <h3>Fotossíntese na prática</h3>
+      <p>Experimento em grupo demonstrando a produção de oxigênio por plantas aquáticas
+      sob diferentes intensidades de luz.</p>
+    </div>
+    <div class="projeto-card">
+      <p class="projeto-materia">BIOLOGIA</p>
+      <h3>Sistema circulatório humano</h3>
+      <p>Apresentação sobre o trajeto do sangue pelo corpo, com foco em como o coração
+      e os vasos trabalham juntos.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Feito por <strong>Gabriel</strong> · São Paulo</p>
+</footer>
+
+</body>
+</html>
